@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="icon" href="./icon/892531.svg" type="image/x-icon"/>
+    <title> My Photo Map</title>
+</head>
+
+<body>
+  <!-- navigation bar, including file selector and map mode switch -->
+    <div class="navigationBar">
+      <span>
+        <i id="logo" class="fa fa-map-marker" aria-hidden="true" ></i> My Photo Map
+      </span>
+      <div class="toggleAndFile" >
+        <span class="toggleText">Map Mode</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+        <label class="inputLabel">
+          <input id="inputFiles" type="file" multiple="true">
+          <i class="fa fa-photo"></i> Select your Photos
+        </label>
+      </div>
+    </div>
+
+  <!-- navigation bar is fixed-position, a placeholder to prevent overlapped -->
+    <div class='placeholder'></div>
+
+  <!-- middle part of window, including a large photo, text info. and modal  -->
+    <div class='largePhoto'>
+      <img id='largePhoto1'/>
+      <dl class='photoInfo'>
+        <dt>File Name</dt>
+        <dd></dd>
+        <dt>Size</dt>
+        <dd></dd>
+        <dt>Date Time</dt>
+        <dd id='imgDateTime'></dd>
+        <dt>Latitude</dt>
+        <dd></dd>
+        <dt>Longitude</dt>
+        <dd></dd>
+      </dl>
+      <div class='modal'>
+        <span class="close">&times;</span>
+        <img class="modal-content">
+      </div>
+    </div>
+
+  <!-- middle part of window, display default state is "none",
+    using OpenLayers map API (ol); including controlling buttons-->
+    <div class= "mapMode">
+      <dl class="mapController">
+        <div class = "mapThumbnailBlock">
+          <img class="mapThumbnail">
+        </div>
+        <div class="container">
+          <dt class="showAll">Show all markers</dt>
+          <dd class="showAll">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </dd>
+          <dt class="showOrder">Show markers in Order</dt>
+          <dd class="showOrder">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </dd>
+          <dt class="chooseTime">Time Interval
+            <label class="submitBtn"> Submit
+              <input type="submit">
+            </label>
+          </dt>
+          <dd class="chooseTime">
+              <div class="start">
+                <span>From</span>
+                <input type="datetime-local" value="">
+              </div>
+              <div class="end">
+                <span>To</span>
+                <input type="datetime-local" value="">
+              </div>
+          </dd>
+        </div>
+      </dl>
+      <div class='modal' tabindex="-1"> <!--assign tabindex for focusable-->
+        <img class="modal-content">
+      </div>
+      <div id="map"></div>
+      <div class="loaderBackground">
+        <div>
+          <div class="loader">
+            <div class="loaderIn">
+              <div class="loaderIn2">
+              </div>
+            </div>
+          </div>
+          <div class = "progress">
+          </div>
+        </div>
+      </div>
+      <div class="timeInterval"></div>
+    </div>
+
+  <!-- five thumbnails and left/right buttons -->
+    <div class="photoRow">
+      <button class="btn" id='btn1'><span>L</span></button>
+      <img class="photo" id="photoCol1"/>
+      <img class="photo" id="photoCol2"/>
+      <img class="photo" id="photoCol3"/>
+      <img class="photo" id="photoCol4"/>
+      <img class="photo" id="photoCol5"/>
+      <button class="btn" id='btn2'><span>R</span></button>
+    </div>
+
+    <script type="text/javascript" src="./vendors.bundle.js"></script>
+    <script type="text/javascript" src="./main.bundle.js"></script>
+
+</body>
+
+</html>
